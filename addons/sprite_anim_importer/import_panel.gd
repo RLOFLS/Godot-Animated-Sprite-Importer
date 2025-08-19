@@ -55,7 +55,10 @@ func _on_import_pressed():
 	if not ani_config.texture or not ani_config.texture is Texture2D:
 		push_error("Invalid texture")
 		return
-	
+
+	if target.get_sprite_frames() == null:
+		target.set_sprite_frames(SpriteFrames.new())
+
 	print(ani_config.row_ani_names)
 	for row_index in range(ani_config.row_ani_names.size()):
 		var row_name = ani_config.row_ani_names[row_index]
